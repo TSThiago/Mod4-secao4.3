@@ -1,0 +1,112 @@
+*{
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    margin: 0;
+    background-color: #eeeeee;
+}
+
+body {
+    width: 100%;
+}
+
+.navBar a {
+    background-color: #ffdb15;
+    color: black;
+    text-decoration: none;
+    margin-right: 5vw;
+}
+
+.searchBar {
+    background-color: #ffdb15;
+    display: grid;
+    place-content: center;
+    height: 6vh;
+    width: 100%;
+}
+
+.linksBar {
+    background-color: #ffdb15;
+    border-top: 0.5vh ;
+    border-bottom: 0.5vh;
+    border-left: 0;
+    border-right: 0;
+    border-style: solid;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    height: 6vh;
+    width: 100%;
+}
+
+.benefitsBar {
+    border-radius: 2em;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    margin: 3vh auto;
+    width: 70vw;
+    height: 15vh;
+    background-color: white;
+}
+
+.benefit{
+    margin-right: 2vw;
+    display: grid;
+    place-content: center;
+    background-color: white;
+    padding: 1vw;
+    width: 18vw;
+    height: 15vh;
+}
+
+.benefit span {
+    background-color: white;
+    font-size: large;
+}
+
+.benefit p {
+    background-color: white;
+}
+
+.firstBenefit {
+    border-style: solid;
+    border-bottom: 0;
+    border-top: 0;
+    border-left: 0;
+    margin-left: 2vw;
+}
+
+.product {
+    height: 250px;
+    width: 200px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
+
+.products {
+    margin: 0 auto;
+    width: 50vw;
+    display: flex;
+    flex-wrap: wrap;    
+}
+
+.product {
+    height: 250px;
+    width: 200px;
+    background-color: white;
+    margin: 10px auto;
+}
+
+.product span{
+    background-color: white;
+    margin-left: 1vw;
+}
+
+.product p {
+    background-color: white;
+    margin-left: 1vw;
+}
