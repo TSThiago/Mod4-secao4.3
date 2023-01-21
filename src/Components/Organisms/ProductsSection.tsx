@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
 import ProductCard from "../Molecules/ProductCard";
+import Button from "../Atoms/Button";
 
 export interface IProduct {
     nome: string;
@@ -12,14 +13,6 @@ export interface IProduct {
 }
 
 const ProductsSection: React.FC = () => {
-    const [value, setValue] = useState({
-        nome: '',
-        marca: '',
-        valor: 0,
-        categoria: '',
-        imagem: '',
-        id: 0,
-    })
     const [productList, setProductList] = useState<IProduct[]>([])
 
     useEffect(() => {
@@ -41,10 +34,25 @@ const ProductsSection: React.FC = () => {
         setProductList(products)
     }
 
+    function sortHightoLow(array : IProduct[]){
+        array.sort((a,b) => b.valor && a.valor ? b.valor - a.valor : 0)
+    }
+
+    function sortLowtoHigh(array : IProduct[]){
+        array.sort((a,b) => a.valor && b.valor ? a.valor - b.valor : 0)
+    }
+
     return (
-        <div className="products">
-            <ProductCard productsList={productList}></ProductCard>
-        </div>
+        <>
+            <div className="buttons">
+                <Button OnClick={sortLowtoHigh(productList)}>Ordem Crescente</Button>
+                <Button OnClick={sortHightoLow(productList)}>Ordem Decrescente</Button>
+            </div>
+            <div className="products">
+                <ProductCard productsList={productList}></ProductCard>
+            </div>
+        </>
+
     )
 }
 

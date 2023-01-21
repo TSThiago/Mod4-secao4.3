@@ -1,6 +1,8 @@
+import { IProduct } from "../Organisms/ProductsSection";
+
 interface IButton {
     children: string;
-    OnClick: 
+    OnClick: () => void
 }
 
 const Button : React.FC<IButton> = (props) => {
