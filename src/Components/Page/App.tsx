@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+import './App.sass'
 import NavBar from '../Organisms/NavBar'
 import BenefitsBar from '../Organisms/BenefitsBar'
 import ProductsSection from '../Organisms/ProductsSection'
