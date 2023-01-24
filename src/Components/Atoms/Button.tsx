@@ -7,7 +7,7 @@ interface IButton {
 
 const Button : React.FC<IButton> = (props) => {
     return (
-        <button onClick={props.OnClick}>{props.children}</button>
+        <button onClick={() => {props.OnClick()}}>{props.children}</button>
     )
 }
 
