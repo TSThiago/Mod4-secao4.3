@@ -43,10 +43,10 @@ const ProductCard: React.FC<IProductCard> = ({ data, status }) => {
                 <Button OnClick={sortLowtoHigh}>Ordem Crescente</Button>
                 <Button OnClick={sortHightoLow}>Ordem Decrescente</Button>
             </div >
-            <div className="products">
+            <div >
                 {status === 'loading' && <div>Loading...</div>}
                 {status === 'error' && <div>Error fetching products</div>}
-                {status === 'success' && <div>{ProductsCard(data)}</div>}
+                {status === 'success' && <div className="products">{ProductsCard(data)}</div>}
             </div>
         </>
     );;
