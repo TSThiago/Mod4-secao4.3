@@ -1,6 +1,16 @@
-const Input: React.FC = () => {
+interface IInput {
+    id: string;
+    children: string;
+    type: string
+}
+
+const Input: React.FC<IInput> = (props) => {
     return (
-        <input type="text" />
+        <>
+            <label htmlFor={props.id}>{props.children}</label>
+            <input id={props.id} type={props.type} />
+        </>
+
     )
 }
 

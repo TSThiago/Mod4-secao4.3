@@ -1,4 +1,4 @@
-import { IProduct } from "../Organisms/ProductsSection";
+import { IProduct } from "../Molecules/ProductCard";
 
 interface IButton {
     children: string;

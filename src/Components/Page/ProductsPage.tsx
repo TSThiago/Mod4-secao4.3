@@ -1,17 +1,15 @@
-import { useState } from 'react'
-import './App.sass'
+import './style.sass'
 import NavBar from '../Organisms/NavBar'
 import BenefitsBar from '../Organisms/BenefitsBar'
-import ProductsSection from '../Organisms/ProductsSection'
+import SearchProducts from '../Organisms/SearchProducts'
 
 function App() {
   return (
     <>
       <NavBar></NavBar>
       <BenefitsBar></BenefitsBar>
-      <ProductsSection></ProductsSection>
+      <SearchProducts></SearchProducts>
     </>
-
   )
 }
 

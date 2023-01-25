@@ -5,7 +5,7 @@ import {
     useQuery,
     useQueryClient
 } from "react-query"
-import ProductCard from "./ProductCard";
+import ProductCard from "../Molecules/ProductCard";
 
 const qc = new QueryClient();
 

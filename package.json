@@ -9,11 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/reach__router": "^1.3.11",
     "axios": "^1.2.3",
     "node-sass": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-query": "^3.39.2"
+    "react-query": "^3.39.2",
+    "react-router-dom": "^6.7.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
