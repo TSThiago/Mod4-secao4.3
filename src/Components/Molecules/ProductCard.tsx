@@ -50,8 +50,8 @@ const ProductCard: React.FC<IProductCard> = ({ data, status }) => {
                 <Button OnClick={sortHightoLow}>Ordem Decrescente</Button>
             </div >
             <div >
-                {status === 'loading' && <div>Loading...</div>}
-                {status === 'error' && <div>Error fetching products</div>}
+                {status === 'loading' && <div className="products">Loading...</div>}
+                {status === 'error' && <div className="products">Error fetching products</div>}
                 {status === 'success' && <div className="products">{ProductsCard(data)}</div>}
             </div>
         </>

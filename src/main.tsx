@@ -14,5 +14,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             <Route path="/cadastro" element={<FormPage />} />
         </Routes>
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

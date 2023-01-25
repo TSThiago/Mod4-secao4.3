@@ -1,14 +1,16 @@
 interface IInput {
-    id: string;
-    children: string;
-    type: string
+    id?: string;
+    children?: string;
+    type: string;
+    OnChange: () => void;
+    value: string | number | undefined
 }
 
 const Input: React.FC<IInput> = (props) => {
     return (
         <>
             <label htmlFor={props.id}>{props.children}</label>
-            <input id={props.id} type={props.type} />
+            <input onChange={() => {props.OnChange()}} defaultValue={props.value} id={props.id} type={props.type} />
         </>
 
     )
