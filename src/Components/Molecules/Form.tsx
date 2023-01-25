@@ -11,11 +11,17 @@ export interface IProduct {
 }
 
 const Form: React.FC = () => {
-    const [formValues, setFormValues] = useState({ nome: "", marca: "", valor: undefined, categoria: "", imagem: "" });
+    const [formValues, setFormValues] = useState({ nome: "", marca: "", valor: "", categoria: "", imagem: "" });
     const [disabled, setDisabled] = useState(true);
 
     const registerProduct = () => {
-        let newProduct: object = formValues
+        let newProduct: object = {
+            nome: formValues.nome,
+            marca: formValues.marca,
+            valor: parseFloat(formValues.valor),
+            categoria: formValues.categoria,
+            imagem: formValues.imagem
+        } 
         let myInit = {
             method: 'POST',
             headers: {
@@ -35,7 +41,7 @@ const Form: React.FC = () => {
     }
 
 useEffect(() => {
-    setDisabled(!(!!formValues.nome && !!formValues.marca && !!formValues.valor && !!formValues.categoria && !!formValues.imagem));
+    setDisabled(!(!!formValues.nome && !!formValues.marca && (!!formValues.valor && !!parseFloat(formValues.valor))  && !!formValues.categoria && !!formValues.imagem));
 }, [formValues]);
 
 const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
