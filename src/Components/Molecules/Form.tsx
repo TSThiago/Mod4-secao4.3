@@ -1,3 +1,4 @@
+import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import Input from "../Atoms/Input";
 
@@ -11,59 +12,53 @@ export interface IProduct {
 }
 
 const Form: React.FC = () => {
-    const [formValues, setFormValues] = useState({ nome: "", marca: "", valor: "", categoria: "", imagem: "" });
+    const formik = useFormik({
+        initialValues: {
+            nome: '',
+            marca: '',
+            valor: '',
+            categoria: '',
+            imagem: ''
+        },
+        onSubmit: (values) => {
+            let newProduct: object = values
+            let myInit = {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newProduct)
+            };
+            fetch('https://apigenerator.dronahq.com/api/rYKJH80w/produtoML', myInit)
+                .then(function (response) {
+                    return response.json();
+                })
+            alert(formik.values.nome + " registardo com sucesso!")
+        }
+    })
     const [disabled, setDisabled] = useState(true);
 
-    const registerProduct = () => {
-        let newProduct: object = {
-            nome: formValues.nome,
-            marca: formValues.marca,
-            valor: parseFloat(formValues.valor),
-            categoria: formValues.categoria,
-            imagem: formValues.imagem
-        } 
-        let myInit = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newProduct)
-        };
-        fetch('https://apigenerator.dronahq.com/api/rYKJH80w/produtoML', myInit)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            console.log(data)
-        })
-        alert(formValues.nome + " registardo com sucesso!")
-    }
+    useEffect(() => {
+        setDisabled(!((!!formik.values.nome) && !!formik.values.marca && (!!formik.values.valor && !!parseFloat(formik.values.valor) && parseFloat(formik.values.valor) > 0) && !!formik.values.categoria && !!formik.values.imagem));
+    }, [formik.values]);
 
-useEffect(() => {
-    setDisabled(!(!!formValues.nome && !!formValues.marca && (!!formValues.valor && !!parseFloat(formValues.valor))  && !!formValues.categoria && !!formValues.imagem));
-}, [formValues]);
-
-const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormValues({ ...formValues, [event.target.id]: event.target.value });
-}
-
-return (
-    <form >
-        <label htmlFor="nome">Nome:</label>
-        <input onChange={handleChange} defaultValue={formValues.nome} id={"nome"} type="text" />
-        <label htmlFor="marca">Marca:</label>
-        <input onChange={handleChange} defaultValue={formValues.marca} id={"marca"} type="text" />
-        <label htmlFor="valor">Valor:</label>
-        <input onChange={handleChange} defaultValue={formValues.valor} id={"valor"} type="text" />
-        <label htmlFor="categoria">Categoria:</label>
-        <input onChange={handleChange} defaultValue={formValues.categoria} id={"categoria"} type="text" />
-        <label htmlFor="imagem">Imagem url:</label>
-        <input onChange={handleChange} defaultValue={formValues.imagem} id={"imagem"} type="text" />
-        <br></br>
-        <input onClick={registerProduct} disabled={disabled} type="submit"></input>
-    </form>
-)
+    return (
+        <form onSubmit={formik.submitForm}>
+            <label htmlFor="nome">Nome:</label>
+            <input onChange={formik.handleChange} defaultValue={formik.values.nome} id="nome" type="text" />
+            <label htmlFor="marca">Marca:</label>
+            <input onChange={formik.handleChange} defaultValue={formik.values.marca} id="marca" type="text" />
+            <label htmlFor="valor">Valor:</label>
+            <input onChange={formik.handleChange} defaultValue={formik.values.valor} id="valor" type="text" />
+            <label htmlFor="categoria">Categoria:</label>
+            <input onChange={formik.handleChange} defaultValue={formik.values.categoria} id="categoria" type="text" />
+            <label htmlFor="imagem">Imagem url:</label>
+            <input onChange={formik.handleChange} defaultValue={formik.values.imagem} id="imagem" type="text" />
+            <br></br>
+            <button disabled={disabled} type="submit">Cadastrar</button>
+        </form>
+    )
 }
 
 export default Form;
