@@ -1,6 +1,7 @@
 import NavBar from "../Organisms/NavBar"
-import Form from "../Molecules/Form"
+import Form from "../Organisms/Form"
 import './style.sass'
+
 const FormPage : React.FC = () => {
     return (
         <>
